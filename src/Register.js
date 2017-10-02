@@ -12,7 +12,8 @@ class Register extends Component {
     this.state={
       name: '',
       username:'',
-      password:''
+      password:'',
+      password_confirm: ''
     }
   }
 
@@ -25,7 +26,8 @@ class Register extends Component {
       "credentials": {
         "name": this.state.name,
         "username": this.state.username,
-        "password": this.state.password
+        "password": this.state.password,
+        "password_confirm": this.state.password_confirm
       }
     }
     axios({
@@ -38,7 +40,8 @@ class Register extends Component {
         "credentials": {
           "name": this.state.name,
           "username": this.state.username,
-          "password": this.state.password
+          "password": this.state.password,
+          "password_confirm": this.state.password_confirm
         }
       }
     })
@@ -90,6 +93,13 @@ class Register extends Component {
              hintText="Enter your Password"
              floatingLabelText="Password"
              onChange = {(event,newValue) => this.setState({password:newValue})}
+             />
+           <br/>
+           <TextField
+             type="password"
+             hintText="Confirm your Password"
+             floatingLabelText="Confirm Password"
+             onChange = {(event,newValue) => this.setState({password_confirm:newValue})}
              />
            <br/>
            <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
