@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
@@ -9,10 +11,15 @@ import UploadScreen from './UploadScreen'
 class Login extends Component {
 constructor(props){
   super(props);
-  this.state={
-  username:'',
-  password:''
+  this.state= {
+    username:'',
+    password:'',
+    open: false
   }
+  this.handleClick = this.handleClick.bind(this);
+  this.handleProfile = this.handleProfile.bind(this);
+  this.handleSignOut = this.handleSignOut.bind(this);
+  this.handleToggle = this.handleToggle.bind(this);
  }
 
 handleClick(event) {
@@ -50,6 +57,20 @@ handleClick(event) {
         });
       }
 
+handleProfile(event) {
+  console.log("go to profile page")
+}
+
+handleSignOut(event) {
+  console.log("sign out page")
+}
+
+handleToggle() {
+  this.setState({
+    open: !this.state.open
+  })
+}
+
 render() {
     return (
       <div>
@@ -57,6 +78,13 @@ render() {
           <div>
           <AppBar
              title="Login"
+             onClick={this.handleToggle}
+             children={
+               <Drawer open={this.state.open}>
+                 <MenuItem>Profile</MenuItem>
+                 <MenuItem>Sign Out</MenuItem>
+               </Drawer>
+             }
            />
            <TextField
              hintText="Enter your Username"
