@@ -28,7 +28,20 @@ class Register extends Component {
         "password": this.state.password
       }
     }
-    axios.post(apiBaseUrl + '/sign-up', payload)
+    axios({
+      method: 'post',
+      url: apiBaseUrl + '/sign-up',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        "credentials": {
+          "name": this.state.name,
+          "username": this.state.username,
+          "password": this.state.password
+        }
+      }
+    })
       .then(function(response) {
           console.log(response);
           if (response.data.code == 200) {
