@@ -12,6 +12,8 @@ class UploadScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: props.id,
+      token: props.token,
       open: false
     }
     this.handleToggle = this.handleToggle.bind(this)
@@ -19,6 +21,7 @@ class UploadScreen extends Component {
     this.handleDowntown = this.handleDowntown.bind(this)
     this.handleEastSide = this.handleEastSide.bind(this)
     this.handleSmithHill = this.handleSmithHill.bind(this)
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
   handleToggle() {
@@ -44,7 +47,14 @@ class UploadScreen extends Component {
   }
 
   handleSignOut() {
-    console.log("You gonna log out?")
+    axios({
+      method: 'delete',
+      url: 'http://localhost:4741/sign-out/' + this.state.id,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token token=' + this.state.token
+      }
+    })
   }
 
   render() {

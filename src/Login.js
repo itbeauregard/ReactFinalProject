@@ -15,6 +15,7 @@ class Login extends Component {
       username:'',
       password:'',
       token: '',
+      id: '',
       open: false
     }
     this.handleClick = this.handleClick.bind(this);
@@ -40,12 +41,15 @@ handleClick(event) {
       }
     })
       .then(function(response) {
-          console.log(response);
+          console.log(response.data.user.token);
           if (response.status === 200) {
             console.log("Login successfull");
-            this.setState({ token: response.data.token })
+            self.setState({
+              token: response.data.user.token,
+              id: response.data.user.id
+            })
             var uploadScreen = [];
-            uploadScreen.push( < UploadScreen appContext = {
+            uploadScreen.push(<UploadScreen token={self.state.token} id={self.state.id} appContext = {
                 self.props.appContext
               }
               />)
@@ -53,6 +57,7 @@ handleClick(event) {
                 loginPage: [],
                 uploadScreen: uploadScreen
               })
+              console.log(self.state.token)
             }
             else if (response.status === 204) {
               console.log("Username password do not match");
