@@ -94,6 +94,7 @@ render() {
                </Drawer>
              }
            />
+           <h1>[ Monument ]</h1>
            <TextField
              hintText="Enter your Username"
              floatingLabelText="Username"

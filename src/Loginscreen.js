@@ -18,7 +18,7 @@ class Loginscreen extends Component {
   componentWillMount(){
     var loginscreen=[];
     loginscreen.push(<Login parentContext={this} appContext={this.props.parentContext}/>);
-    var loginmessage = "Not registered yet, Register Now";
+    var loginmessage = "No account? Sign up here:";
     this.setState({
                   loginscreen:loginscreen,
                   loginmessage:loginmessage
@@ -55,7 +55,7 @@ class Loginscreen extends Component {
             })
           }
         }
-        
+
   render() {
     return (
       <div className="loginscreen">
