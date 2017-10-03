@@ -40,7 +40,7 @@ handleClick(event) {
     })
       .then(function(response) {
           console.log(response.status);
-          if (response.status == 200) {
+          if (response.status === 200) {
             console.log("Login successfull");
             var uploadScreen = [];
             uploadScreen.push( < UploadScreen appContext = {
@@ -52,7 +52,7 @@ handleClick(event) {
                 uploadScreen: uploadScreen
               })
             }
-            else if (response.status == 204) {
+            else if (response.status === 204) {
               console.log("Username password do not match");
               alert("username password do not match")
             } else {
