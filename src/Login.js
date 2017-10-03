@@ -25,11 +25,19 @@ constructor(props){
 handleClick(event) {
     var apiBaseUrl = "http://localhost:4741";
     var self = this;
-    var payload = {
-      "username": this.state.username,
-      "password": this.state.password
-    }
-    axios.post(apiBaseUrl + '/sign-in', payload)
+    axios({
+      method: 'post',
+      url: apiBaseUrl + '/sign-in',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        "credentials": {
+          "username": this.state.username,
+          "password": this.state.password
+        }
+      }
+    })
       .then(function(response) {
           console.log(response);
           if (response.data.code == 200) {
