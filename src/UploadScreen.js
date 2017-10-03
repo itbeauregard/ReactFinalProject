@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import axios from 'axios';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 // import Tab from 'material-ui/Tabs';
 
@@ -42,6 +43,10 @@ class UploadScreen extends Component {
     console.log("You went up dah hill!")
   }
 
+  handleSignOut() {
+    console.log("You gonna log out?")
+  }
+
   render() {
     return (
       <div>
@@ -52,7 +57,7 @@ class UploadScreen extends Component {
              children={
                <Drawer open={this.state.open}>
                  <MenuItem>Profile</MenuItem>
-                 <MenuItem>Sign Out</MenuItem>
+                 <MenuItem onClick={this.handleSignOut}>Sign Out</MenuItem>
                </Drawer>
              }
            />
