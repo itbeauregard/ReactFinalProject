@@ -47,7 +47,7 @@ class Register extends Component {
     })
       .then(function(response) {
           console.log(response);
-          if (response.data.code == 200) {
+          if (response.status == 200) {
             //  console.log("registration successfull");
             var loginscreen = [];
             loginscreen.push( < Login parentContext = {
