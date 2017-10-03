@@ -22,14 +22,6 @@ class Register extends Component {
     console.log("values", this.state.name, this.state.username, this.state.password);
     //To be done:check for empty values before hitting submit
     var self = this;
-    var payload = {
-      "credentials": {
-        "name": this.state.name,
-        "username": this.state.username,
-        "password": this.state.password,
-        "password_confirm": this.state.password_confirm
-      }
-    }
     axios({
       method: 'post',
       url: apiBaseUrl + '/sign-up',
