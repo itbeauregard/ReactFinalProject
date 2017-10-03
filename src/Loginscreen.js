@@ -28,8 +28,8 @@ class Loginscreen extends Component {
   handleClick(event) {
       // console.log("event",event);
       var loginmessage;
+      var loginscreen = [];
       if (this.state.isLogin) {
-        var loginscreen = [];
         loginscreen.push( < Register parentContext = {
             this
           }
@@ -42,7 +42,6 @@ class Loginscreen extends Component {
           })
         }
         else {
-          var loginscreen = [];
           loginscreen.push( < Login parentContext = {
               this
             }
