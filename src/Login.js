@@ -9,18 +9,19 @@ import axios from 'axios';
 import UploadScreen from './UploadScreen'
 
 class Login extends Component {
-constructor(props){
-  super(props);
-  this.state= {
-    username:'',
-    password:'',
-    open: false
+  constructor(props){
+    super(props);
+    this.state= {
+      username:'',
+      password:'',
+      token: '',
+      open: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+    this.handleProfile = this.handleProfile.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
   }
-  this.handleClick = this.handleClick.bind(this);
-  this.handleProfile = this.handleProfile.bind(this);
-  this.handleSignOut = this.handleSignOut.bind(this);
-  this.handleToggle = this.handleToggle.bind(this);
- }
 
 handleClick(event) {
     var apiBaseUrl = "http://localhost:4741";
@@ -39,9 +40,10 @@ handleClick(event) {
       }
     })
       .then(function(response) {
-          console.log(response.status);
+          console.log(response);
           if (response.status === 200) {
             console.log("Login successfull");
+            this.setState({ token: response.data.token })
             var uploadScreen = [];
             uploadScreen.push( < UploadScreen appContext = {
                 self.props.appContext
