@@ -51,9 +51,9 @@ handleClick(event) {
             var uploadScreen = [];
             uploadScreen.push(
               <UploadScreen
-              token={self.state.token}
-              id={self.state.id}
-              appContext = {self.props.appContext}
+                token={self.state.token}
+                id={self.state.id}
+                appContext = {self.props.appContext}
               />)
               self.props.appContext.setState({
                 loginPage: [],
