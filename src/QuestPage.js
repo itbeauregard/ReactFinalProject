@@ -35,15 +35,21 @@ export class QuestPage extends Component {
     .then(function(response) {
       console.log(response)
       if (response.status === 200) {
-        const question = response.data.questions[0].ask
-        const choices = [
-          response.data.questions[0].first_choice,
-          response.data.questions[0].second_choice,
-          response.data.questions[0].third_choice,
-          response.data.questions[0].fourth_choice,
-          response.data.questions[0].fifth_choice,
-        ]
-        const correct = response.data.questions[0].correct_choice
+        const question = []
+        const choices = []
+        const correct = []
+        response.data.questions.map(function(each) {
+          question.push(each.ask)
+          choices.push([
+            each.first_choice,
+            each.second_choice,
+            each.third_choice,
+            each.fourth_choice,
+            each.fifth_choice
+          ])
+          correct.push(each.correct_choice)
+        })
+        console.log(question)
         console.log(choices)
         console.log(correct)
         console.log(self.props.appContext)
