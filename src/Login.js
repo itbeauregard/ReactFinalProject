@@ -9,7 +9,7 @@ import axios from 'axios';
 import UploadScreen from './UploadScreen'
 
 class Login extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state= {
       username:'',
@@ -49,9 +49,11 @@ handleClick(event) {
               id: response.data.user.id
             })
             var uploadScreen = [];
-            uploadScreen.push(<UploadScreen token={self.state.token} id={self.state.id} appContext = {
-                self.props.appContext
-              }
+            uploadScreen.push(
+              <UploadScreen
+              token={self.state.token}
+              id={self.state.id}
+              appContext = {self.props.appContext}
               />)
               self.props.appContext.setState({
                 loginPage: [],
@@ -96,8 +98,7 @@ render() {
              onClick={this.handleToggle}
              children={
                <Drawer open={this.state.open}>
-                 <MenuItem>Profile</MenuItem>
-                 <MenuItem>Sign Out</MenuItem>
+                 <MenuItem>About Monument</MenuItem>
                </Drawer>
              }
            />
