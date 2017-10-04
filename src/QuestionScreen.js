@@ -3,18 +3,26 @@ import { NavBar } from './NavBar';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import { Choices } from './Choices'
+import { Question } from './Question'
 
 export class QuestionScreen extends Component {
   render() {
+    var self = this;
     return (
       <div>
-        <Choices
-          question={this.props.question}
-          choices={this.props.choices}
-          token={this.props.token}
-          id={this.props.idea}
-        />
+        <MuiThemeProvider>
+          <NavBar
+            token={this.props.token}
+            id={this.props.id}
+          />
+          {self.props.question.map(function(each, index) {
+            return (<Question
+                      question={each}
+                      choices={self.props.choices[index]}
+                      correct={self.props.correct[index]}
+                    />)
+          })}
+        </MuiThemeProvider>
       </div>
     )
   }
