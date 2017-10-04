@@ -23,7 +23,11 @@ class UploadScreen extends Component {
             token={this.state.token}
             id={this.state.id}
           />
-          <QuestPage />
+          <QuestPage
+            appContext={this.props.appContext}
+            token={this.state.token}
+            id={this.state.id}
+          />
         </MuiThemeProvider>
       </div>
     )
