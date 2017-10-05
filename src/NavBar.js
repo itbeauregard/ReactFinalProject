@@ -46,8 +46,7 @@ export class NavBar extends Component {
             id: null
           })
           let loginPage = []
-          loginPage.push(<Loginscreen parentContext={self.props.appContext}
-                          />)
+          loginPage.push(<Loginscreen parentContext={self.props.appContext} />)
           self.props.appContext.setState({
             loginPage: loginPage,
             uploadScreen: []
