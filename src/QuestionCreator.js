@@ -6,7 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import { host } from './server';
-import { ChoiceField } from './ChoiceField'
 
 export class QuestionCreator extends Component {
   constructor(props) {
