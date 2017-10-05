@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import UploadScreen from './UploadScreen'
+import { host } from './server'
 
 class Login extends Component {
   constructor(props) {
@@ -25,11 +26,10 @@ class Login extends Component {
   }
 
 handleClick(event) {
-    var apiBaseUrl = "http://localhost:4741";
     var self = this;
     axios({
       method: 'post',
-      url: apiBaseUrl + '/sign-in',
+      url: host + '/sign-in',
       headers: {
         'Content-Type': 'application/json'
       },

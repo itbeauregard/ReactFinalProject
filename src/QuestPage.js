@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { QuestionScreen } from './QuestionScreen';
+import { host } from './server'
 
 export class QuestPage extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export class QuestPage extends Component {
     let self = this;
     // TODO: get Fox Point data to send to questionScreen
     axios({
-      url: 'http://localhost:4741' + '/questions',
+      url: host + '/questions',
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
