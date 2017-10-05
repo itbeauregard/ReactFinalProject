@@ -59,7 +59,8 @@ export class QuestPage extends Component {
                               question={question}
                               choices={choices}
                               correct={correct}
-                              credentials={this.props.credentials}
+                              appContext={self.props.appContext}
+                              credentials={self.props.credentials}
                               />)
         self.props.appContext.setState({
           uploadScreen: questionScreen
