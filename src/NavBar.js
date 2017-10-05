@@ -5,6 +5,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Loginscreen from './Loginscreen'
+import { host } from './server'
 
 export class NavBar extends Component {
 
@@ -29,7 +30,7 @@ export class NavBar extends Component {
     console.log(this.props.credentials)
     axios({
       method: 'delete',
-      url: 'http://localhost:4741/sign-out/' + this.props.credentials.state.id,
+      url: host + '/sign-out/' + this.props.credentials.state.id,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Token token=' + this.props.credentials.state.token
