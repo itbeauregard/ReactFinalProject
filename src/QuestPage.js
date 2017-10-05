@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { QuestionScreen } from './QuestionScreen';
+import { host } from './server'
 
 export class QuestPage extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export class QuestPage extends Component {
     let self = this;
     // TODO: get Fox Point data to send to questionScreen
     axios({
-      url: 'http://localhost:4741' + '/questions',
+      url: host + '/questions',
       method: 'get',
       headers: {
         'Content-Type': 'application/json',
@@ -35,10 +36,12 @@ export class QuestPage extends Component {
     .then(function(response) {
       console.log(response)
       if (response.status === 200) {
+        const question_id = []
         const question = []
         const choices = []
         const correct = []
         response.data.questions.map(function(each) {
+          question_id.push(each.id)
           question.push(each.ask)
           choices.push([
             each.first_choice,
@@ -49,16 +52,17 @@ export class QuestPage extends Component {
           ])
           correct.push(each.correct_choice)
         })
-        console.log(question)
-        console.log(choices)
-        console.log(correct)
-        console.log(self.props.appContext)
+        const questions = {
+          ids: question_id,
+          asks: question,
+          choices: choices,
+          correct_choices: correct,
+          numberOfQuestions: question.length
+        }
         let questionScreen = [];
         // push questionScreen component with Fox Point data
         questionScreen.push(<QuestionScreen
-                              question={question}
-                              choices={choices}
-                              correct={correct}
+                              questions={questions}
                               appContext={self.props.appContext}
                               credentials={self.props.credentials}
                               />)
@@ -88,6 +92,7 @@ export class QuestPage extends Component {
     return (
       <div>
         <MuiThemeProvider>
+          // TODO: display to user what they've completed on location card
            <h2>Choose your quest:</h2>
            <Card onClick={this.handleFoxPoint}>
             <CardMedia overlay={<CardTitle title="Fox Point" />}>

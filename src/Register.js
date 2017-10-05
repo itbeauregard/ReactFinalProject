@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import Login from './Login';
+import { host } from './server'
 
 class Register extends Component {
   constructor(props){
@@ -18,13 +19,12 @@ class Register extends Component {
   }
 
   handleClick(event) {
-    var apiBaseUrl = "http://localhost:4741";
     console.log("values", this.state.name, this.state.username, this.state.password);
     //To be done:check for empty values before hitting submit
     var self = this;
     axios({
       method: 'post',
-      url: apiBaseUrl + '/sign-up',
+      url: host + '/sign-up',
       headers: {
         'Content-Type': 'application/json'
       },
