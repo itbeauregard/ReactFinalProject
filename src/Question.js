@@ -21,7 +21,8 @@ export class Question extends Component {
               actAsExpander={true}
               showExpandableButton={true} />
             <CardText expandable={true}>
-              <Choices choices={self.props.choices} />
+              <Choices  choices={self.props.choices}
+                        correct={self.props.correct} />
             </CardText>
           </Card>
         </MuiThemeProvider>
