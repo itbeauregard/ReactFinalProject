@@ -6,8 +6,9 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import UploadScreen from './UploadScreen'
-import { host } from './server'
+import UploadScreen from './UploadScreen';
+import { host } from './server';
+import { AdminScreen } from './AdminScreen';
 
 class Login extends Component {
   constructor(props) {
@@ -49,16 +50,24 @@ handleClick(event) {
               id: response.data.user.id
             })
             var uploadScreen = [];
-            uploadScreen.push(
-              <UploadScreen
-                credentials={self}
-                appContext={self.props.appContext}
-              />)
-              self.props.appContext.setState({
-                loginPage: [],
-                uploadScreen: uploadScreen
-              })
+            if (response.data.user.username === 'admin') {
+              uploadScreen.push(
+                <AdminScreen
+                  credential={self}
+                  appContext={self.props.appContext}
+                />)
+            } else {
+              uploadScreen.push(
+                <UploadScreen
+                  credentials={self}
+                  appContext={self.props.appContext}
+                />)
             }
+            self.props.appContext.setState({
+              loginPage: [],
+              uploadScreen: uploadScreen
+            })
+          }
             else if (response.status === 204) {
               console.log("Username password do not match");
               alert("username password do not match")
