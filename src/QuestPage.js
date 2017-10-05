@@ -87,12 +87,12 @@ export class QuestPage extends Component {
   handleSmithHill() {
     console.log("You went up dah hill!")
   }
-
+  
+  // TODO: display to user what they've completed on location card}
   render() {
     return (
       <div>
         <MuiThemeProvider>
-          // TODO: display to user what they've completed on location card
            <h2>Choose your quest:</h2>
            <Card onClick={this.handleFoxPoint}>
             <CardMedia overlay={<CardTitle title="Fox Point" />}>
