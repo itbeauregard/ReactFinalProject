@@ -12,8 +12,8 @@ export class QuestionScreen extends Component {
       <div>
         <MuiThemeProvider>
           <NavBar
-            token={this.props.token}
-            id={this.props.id}
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
           />
           {self.props.question.map(function(each, index) {
             return (<Question

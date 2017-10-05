@@ -9,8 +9,6 @@ class UploadScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      id: props.id,
-      token: props.token,
       open: false
     }
   }
@@ -20,13 +18,12 @@ class UploadScreen extends Component {
       <div>
         <MuiThemeProvider>
           <NavBar
-            token={this.state.token}
-            id={this.state.id}
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
           />
           <QuestPage
             appContext={this.props.appContext}
-            token={this.state.token}
-            id={this.state.id}
+            credentials={this.props.credentials}
           />
         </MuiThemeProvider>
       </div>
