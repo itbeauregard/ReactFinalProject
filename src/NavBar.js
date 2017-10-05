@@ -4,15 +4,13 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import Loginscreen from './Loginscreen'
 
 export class NavBar extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      token: props.token,
-      id: props.id,
       open: false
     }
 
@@ -27,12 +25,14 @@ export class NavBar extends Component {
   }
 
   handleSignOut() {
+    let self = this;
+    console.log(this.props.credentials)
     axios({
       method: 'delete',
-      url: 'http://localhost:4741/sign-out/' + this.state.id,
+      url: 'http://localhost:4741/sign-out/' + this.props.credentials.state.id,
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Token token=' + this.state.token
+        'Authorization': 'Token token=' + this.props.credentials.state.token
       }
     })
     .then(function(response) {
@@ -41,9 +41,16 @@ export class NavBar extends Component {
         if (response.status === 204) {
           // TODO: how do I set the state in a parent component
           // need to set the state of the user across the whole front end
-          this.setState({
+          self.props.credentials.setState({
             token: null,
             id: null
+          })
+          let loginPage = []
+          loginPage.push(<Loginscreen parentContext={self.props.appContext}
+                          />)
+          self.props.appContext.setState({
+            loginPage: loginPage,
+            uploadScreen: []
           })
         }
     })
