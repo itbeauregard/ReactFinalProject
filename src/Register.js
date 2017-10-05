@@ -12,7 +12,8 @@ class Register extends Component {
     this.state={
       name: '',
       username:'',
-      password:''
+      password:'',
+      password_confirm: ''
     }
   }
 
@@ -21,17 +22,24 @@ class Register extends Component {
     console.log("values", this.state.name, this.state.username, this.state.password);
     //To be done:check for empty values before hitting submit
     var self = this;
-    var payload = {
-      "credentials": {
-        "name": this.state.name,
-        "username": this.state.username,
-        "password": this.state.password
+    axios({
+      method: 'post',
+      url: apiBaseUrl + '/sign-up',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        "credentials": {
+          "name": this.state.name,
+          "username": this.state.username,
+          "password": this.state.password,
+          "password_confirm": this.state.password_confirm
+        }
       }
-    }
-    axios.post(apiBaseUrl + '/sign-up', payload)
+    })
       .then(function(response) {
           console.log(response);
-          if (response.data.code == 200) {
+          if (response.status === 200) {
             //  console.log("registration successfull");
             var loginscreen = [];
             loginscreen.push( < Login parentContext = {
@@ -77,6 +85,13 @@ class Register extends Component {
              hintText="Enter your Password"
              floatingLabelText="Password"
              onChange = {(event,newValue) => this.setState({password:newValue})}
+             />
+           <br/>
+           <TextField
+             type="password"
+             hintText="Confirm your Password"
+             floatingLabelText="Confirm Password"
+             onChange = {(event,newValue) => this.setState({password_confirm:newValue})}
              />
            <br/>
            <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
