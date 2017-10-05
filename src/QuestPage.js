@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import { QuestionScreen } from './QuestionScreen';
 
 export class QuestPage extends Component {
   constructor(props) {
@@ -12,12 +13,63 @@ export class QuestPage extends Component {
     this.handleEastSide = this.handleEastSide.bind(this)
     this.handleSmithHill = this.handleSmithHill.bind(this)
   }
+
+  // TODO: make a state or some sort of variable to pass to a constructor function
+  // which builds each location's card
+
   // const questInfo = {
   //   title: ['Fox Point', 'Downtown', 'East Side', 'Smith Hill'],
   //   src: ['https://i.imgur.com/oydon46.jpg', 'https://i.imgur.com/xKbUw25.jpg', 'https://i.imgur.com/YiUbUVN.jpg', 'https://i.imgur.com/NIVcddj.jpg']
   // }
   handleFoxPoint() {
-    console.log("You clicked me!")
+    let self = this;
+    // TODO: get Fox Point data to send to questionScreen
+    axios({
+      url: 'http://localhost:4741' + '/questions',
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token token=' + this.props.token
+      }
+    })
+    .then(function(response) {
+      console.log(response)
+      if (response.status === 200) {
+        const question = []
+        const choices = []
+        const correct = []
+        response.data.questions.map(function(each) {
+          question.push(each.ask)
+          choices.push([
+            each.first_choice,
+            each.second_choice,
+            each.third_choice,
+            each.fourth_choice,
+            each.fifth_choice
+          ])
+          correct.push(each.correct_choice)
+        })
+        console.log(question)
+        console.log(choices)
+        console.log(correct)
+        console.log(self.props.appContext)
+        let questionScreen = [];
+        // push questionScreen component with Fox Point data
+        questionScreen.push(<QuestionScreen
+                              question={question}
+                              choices={choices}
+                              correct={correct}
+                              appContext={self.props.appContext}
+                              credentials={self.props.credentials}
+                              />)
+        self.props.appContext.setState({
+          uploadScreen: questionScreen
+        })
+      }
+    })
+    .catch(function(err) {
+      console.error(err)
+    })
   }
 
   handleDowntown() {
