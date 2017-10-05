@@ -51,15 +51,13 @@ handleClick(event) {
             var uploadScreen = [];
             uploadScreen.push(
               <UploadScreen
-                token={self.state.token}
-                id={self.state.id}
-                appContext = {self.props.appContext}
+                credentials={self}
+                appContext={self.props.appContext}
               />)
               self.props.appContext.setState({
                 loginPage: [],
                 uploadScreen: uploadScreen
               })
-              console.log(self.state.token)
             }
             else if (response.status === 204) {
               console.log("Username password do not match");
