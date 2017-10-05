@@ -53,7 +53,7 @@ handleClick(event) {
             if (response.data.user.username === 'admin') {
               uploadScreen.push(
                 <AdminScreen
-                  credential={self}
+                  credentials={self}
                   appContext={self.props.appContext}
                 />)
             } else {
