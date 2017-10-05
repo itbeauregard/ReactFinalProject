@@ -3,6 +3,7 @@ import { NavBar } from './NavBar';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import { Choices } from './Choices'
 
 export class Question extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export class Question extends Component {
   }
 
   render() {
+    let self = this;
     return(
       <div>
         <MuiThemeProvider>
@@ -19,14 +21,7 @@ export class Question extends Component {
               actAsExpander={true}
               showExpandableButton={true} />
             <CardText expandable={true}>
-              <RadioButtonGroup name='choices'>
-                {this.props.choices.map(function(each) {
-                  return (<RadioButtonGroup
-                            value={each}
-                            label={each}
-                            />)
-                })}
-              </RadioButtonGroup>
+              <Choices choices={self.props.choices} />
             </CardText>
           </Card>
         </MuiThemeProvider>
