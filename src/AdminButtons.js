@@ -59,7 +59,7 @@ export class AdminButtons extends Component {
         <MuiThemeProvider>
           <RaisedButton
             label="See all Questions"
-            secondary={true}
+            primary={true}
             style={style}
             onClick={this.getAllQuestionsClick}
           />
