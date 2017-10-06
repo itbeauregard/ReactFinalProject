@@ -12,6 +12,7 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import { TableData } from './TableData'
+import { AdminButtons } from './AdminButtons';
 
 export class QuestionTableScreen extends Component {
   render() {
@@ -19,6 +20,10 @@ export class QuestionTableScreen extends Component {
       <div>
         <MuiThemeProvider>
           <NavBar
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
+          />
+          <AdminButtons
             appContext={this.props.appContext}
             credentials={this.props.credentials}
           />
