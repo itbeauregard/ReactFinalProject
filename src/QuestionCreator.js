@@ -52,6 +52,10 @@ export class QuestionCreator extends Component {
     return (
       <div>
         <MuiThemeProvider>
+          <NavBar
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
+          />
           <TextField
             hintText="Enter Location"
             floatingLabelText="Location"
