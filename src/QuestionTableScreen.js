@@ -11,10 +11,12 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import { TableData } from './TableData'
+import { TableData } from './TableData';
 import { AdminButtons } from './AdminButtons';
+import { ChangeQuestion } from './ChangeQuestion';
 
 export class QuestionTableScreen extends Component {
+
   render() {
     return (
       <div>
@@ -45,6 +47,11 @@ export class QuestionTableScreen extends Component {
               <TableData data={this.props.data} />
             </TableBody>
           </Table>
+          <ChangeQuestion
+            data={this.props.data}
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
+          />
         </MuiThemeProvider>
       </div>
     )
