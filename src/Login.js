@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import UploadScreen from './UploadScreen';
+import { UploadScreen } from './UploadScreen';
 import { host } from './server';
 import { AdminScreen } from './AdminScreen';
 

@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import { Question } from './Question';
 import RaisedButton from 'material-ui/RaisedButton';
-import UploadScreen from './UploadScreen';
+import { UploadScreen } from './UploadScreen';
 
 export class QuestionScreen extends Component {
   constructor(props) {
