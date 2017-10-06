@@ -6,6 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
 import { host } from './server';
+import { AdminButtons } from './AdminButtons';
 
 export class QuestionCreator extends Component {
   constructor(props) {
@@ -52,6 +53,14 @@ export class QuestionCreator extends Component {
     return (
       <div>
         <MuiThemeProvider>
+          <NavBar
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
+          />
+          <AdminButtons
+            appContext={this.props.appContext}
+            credentials={this.props.credentials}
+          />
           <TextField
             hintText="Enter Location"
             floatingLabelText="Location"

@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import UploadScreen from './UploadScreen';
+import { UploadScreen } from './UploadScreen';
 import { host } from './server';
 import { AdminScreen } from './AdminScreen';
 
@@ -53,7 +53,7 @@ handleClick(event) {
             if (response.data.user.username === 'admin') {
               uploadScreen.push(
                 <AdminScreen
-                  credential={self}
+                  credentials={self}
                   appContext={self.props.appContext}
                 />)
             } else {

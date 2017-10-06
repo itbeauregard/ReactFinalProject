@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import { NavBar } from './NavBar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { QuestionCreator } from './QuestionCreator';
+import { AdminButtons } from './AdminButtons';
 
 export class AdminScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      open: false
-    }
-  }
 
+  // TODO: Have a menu with create, update, delete, and get action options
   render() {
+    const style = { margin: 12 }
     return (
       <div>
         <MuiThemeProvider>
@@ -20,7 +16,7 @@ export class AdminScreen extends Component {
             appContext={this.props.appContext}
             credentials={this.props.credentials}
           />
-          <QuestionCreator
+          <AdminButtons
             appContext={this.props.appContext}
             credentials={this.props.credentials}
           />

@@ -5,7 +5,7 @@ import { QuestPage } from './QuestPage'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
-class UploadScreen extends Component {
+export class UploadScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,5 +30,3 @@ class UploadScreen extends Component {
     )
   }
 }
-
-export default UploadScreen;
