@@ -10,18 +10,21 @@ import { ChangeQuestion } from './ChangeQuestion';
 import axios from 'axios';
 import { host } from './server';
 
-export class QuestionTableScreen extends Component {
+export class UpdateQuestionScreen extends Component {
   constructor(props) {
     super(props)
+    console.log(props.data)
     this.state = {
-      location: props.data.questions.location,
-      ask: props.data.questions.ask,
-      first_choice: props.data.questions.first_choice,
-      second_choice: props.data.questions.second_choice,
-      third_choice: props.data.questions.third_choice,
-      fourth_choice: props.data.questions.fourth_choice,
-      fifth_choice: props.data.questions.fifth_choice,
-      correct_choice: props.data.questions.correct_choice
+      id: props.data.question.id,
+      location: props.data.question.location,
+      ask: props.data.question.ask,
+      first_choice: props.data.question.first_choice,
+      second_choice: props.data.question.second_choice,
+      third_choice: props.data.question.third_choice,
+      fourth_choice: props.data.question.fourth_choice,
+      fifth_choice: props.data.question.fifth_choice,
+      correct_choice: props.data.question.correct_choice,
+      userMessage: ''
     }
   }
 
@@ -29,14 +32,14 @@ export class QuestionTableScreen extends Component {
     event.preventDefault()
     let self = this;
     axios({
-      url: host + '/questions/' + self.state.id,
+      url: host + '/questions/' + this.state.id,
       method: 'patch',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Token token=' + this.props.credentials.state.token
       },
       data: {
-        'questions': {
+        'question': {
           'location': this.state.location,
           'ask': this.state.ask,
           'first_choice': this.state.first_choice,
@@ -48,6 +51,17 @@ export class QuestionTableScreen extends Component {
         }
       }
     })
+      .then(function(response) {
+        self.setState({
+          userMessage: 'You successfully updated the question!'
+        })
+      })
+      .catch(function(err) {
+        console.error(err)
+        self.setState({
+          userMessage: 'There was an error updating the question.'
+        })
+      })
   }
 
 
