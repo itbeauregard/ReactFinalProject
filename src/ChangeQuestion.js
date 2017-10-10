@@ -41,7 +41,7 @@ export class ChangeQuestion extends Component {
           method: 'get',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Token token=' + this.props.credentials.state.token
+            'Authorization': 'Token token=' + self.props.credentials.state.token
           }
         })
         .then(function(response) {

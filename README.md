@@ -1,6 +1,7 @@
 # {Education App}
 
-
+Here is a [link to my deployed Heroku back end](https://monument-app.herokuapp.com/).
+Here is a [link to my GitHub repository](https://github.com/itbeauregard/final-back-end).
 
 ## Technologies Used
 
@@ -27,7 +28,7 @@ You can see my [wireframes](https://imgur.com/a/2XIvb) here.
 
 The process of getting started on this project was remarkably difficult. Having no template for a React front end, I spent many hours perusing the internet for a tutorial that didn't lock me in to a rigid set-up. I spent several hours trying to start with React Native but the amount of time it took to initialize everything was very disconcerting. Native has a great feature of being able to serve your code locally on your smartphone, however, it requires that your phone and computer to be on the same wireless network and my wifi was never reliable. After several 15-minute, occasionally successful attempts to connect the phone and laptop, I decided that the amazingness of the technology was not worth the time cost. I eventually came to understand that I wanted a Rails-friendly React template. I googled away for a basic starter for a login page.
 
-I found a [Medium blog post](https://medium.com/technoetics/create-basic-login-forms-using-create-react-app-module-in-reactjs-511b9790dede), written by a fellow name Saurabh Mhatre, that offered a decent template for getting started with a Material UI style framework. I started by pretty much copy-pasting the code from this website then refactoring it to work with my back end. This template uses the axios module to request CRUD actions from the back end. Since axios' request style is so similar to what I've used in previous projects to make AJAX requests, it was fairly easy to dive into using. Once I got the sign in and sign up functions working, I felt immensely more confident in my ability to work with React.
+I found a [Medium blog post](https://medium.com/technoetics/create-basic-login-forms-using-create-react-app-module-in-reactjs-511b9790dede), written by a fellow named Saurabh Mhatre, that offered a decent template for getting started with a Material UI style framework. I started by pretty much copy-pasting the code from this website then refactoring it to work with my back end. This template uses the axios module to request CRUD actions from the back end. Since axios' request style is so similar to what I've used in previous projects to make AJAX requests, it was fairly easy to dive into using. Once I got the sign in and sign up functions working, I felt immensely more confident in my ability to work with React.
 
 Once I got the login actions working I started chaining out components. I started writing the code for components before I really understood how the changing of views worked in this template. Basically, the App.js stores the state of the page and toggles between the login page and the 'uploadscreen', which stores the container component for any other page displayed on the app.
 
