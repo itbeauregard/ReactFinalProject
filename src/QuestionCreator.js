@@ -19,12 +19,14 @@ export class QuestionCreator extends Component {
       third_choice: '',
       fourth_choice: '',
       fifth_choice: '',
-      correct_choice: ''
+      correct_choice: '',
+      userMessage: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event) {
+    let self = this;
     event.preventDefault()
     axios({
       method: 'post',
@@ -46,6 +48,17 @@ export class QuestionCreator extends Component {
         }
       }
     })
+      .then(function() {
+        self.setState({
+          userMessage: 'You successfully created a question!'
+        })
+      })
+      .catch(function(err) {
+        console.error(err)
+        self.setState({
+          userMessage: 'There was an issue creating your question.'
+        })
+      })
 
   }
 
@@ -61,6 +74,7 @@ export class QuestionCreator extends Component {
             appContext={this.props.appContext}
             credentials={this.props.credentials}
           />
+          <h3>{this.state.userMessage}</h3>
           <TextField
             hintText="Enter Location"
             floatingLabelText="Location"
