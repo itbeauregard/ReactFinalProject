@@ -34,11 +34,11 @@ export class ChangeQuestion extends Component {
     })
       .then(function(response) {
         const data = response.data
-        this.props.appContext.setState({
+        self.props.appContext.setState({
           uploadScreen: <UpdateQuestionScreen
                           data={data}
-                          appContext={this.props.appContext}
-                          credentials={this.props.credentials}
+                          appContext={self.props.appContext}
+                          credentials={self.props.credentials}
                         />
         })
       })
