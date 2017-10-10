@@ -89,7 +89,7 @@ export class UpdateQuestionScreen extends Component {
             hintText="Enter Question"
             floatingLabelText="Question"
             value={this.state.ask}
-            onChange = {(event,newValue) => this.setState({question:newValue})}
+            onChange = {(event,newValue) => this.setState({ask:newValue})}
             />
           <br />
           <TextField
