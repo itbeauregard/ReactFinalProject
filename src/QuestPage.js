@@ -18,10 +18,11 @@ export class QuestPage extends Component {
   // TODO: make a state or some sort of variable to pass to a constructor function
   // which builds each location's card
 
-  // const questInfo = {
-  //   title: ['Fox Point', 'Downtown', 'East Side', 'Smith Hill'],
-  //   src: ['https://i.imgur.com/oydon46.jpg', 'https://i.imgur.com/xKbUw25.jpg', 'https://i.imgur.com/YiUbUVN.jpg', 'https://i.imgur.com/NIVcddj.jpg']
-  // }
+  const questInfo = {
+    title: ['Fox Point', 'Downtown', 'East Side', 'Smith Hill'],
+    src: ['https://i.imgur.com/oydon46.jpg', 'https://i.imgur.com/xKbUw25.jpg', 'https://i.imgur.com/YiUbUVN.jpg', 'https://i.imgur.com/NIVcddj.jpg']
+  }
+
   handleFoxPoint() {
     let self = this;
     // TODO: get Fox Point data to send to questionScreen
@@ -87,7 +88,7 @@ export class QuestPage extends Component {
   handleSmithHill() {
     console.log("You went up dah hill!")
   }
-  
+
   // TODO: display to user what they've completed on location card}
   render() {
     return (
@@ -95,23 +96,23 @@ export class QuestPage extends Component {
         <MuiThemeProvider>
            <h2>Choose your quest:</h2>
            <Card onClick={this.handleFoxPoint}>
-            <CardMedia overlay={<CardTitle title="Fox Point" />}>
-              <img src="https://i.imgur.com/oydon46.jpg" alt='fox point'/>
+            <CardMedia overlay={<CardTitle title={questInfo.title[0]} />}>
+              <img src={questInfo.src[0]} alt={questInfo.title[0]}/>
             </CardMedia>
            </Card>
            <Card onClick={this.handleDowntown}>
-            <CardMedia overlay={<CardTitle title="Downtown" />}>
-              <img src="https://i.imgur.com/xKbUw25.jpg" alt='downtown'/>
+            <CardMedia overlay={<CardTitle title={questInfo.title[1]} />}>
+              <img src={questInfo.src[1]} alt={questInfo.title[1]}/>
             </CardMedia>
            </Card>
            <Card onClick={this.handleEastSide}>
-            <CardMedia overlay={<CardTitle title="East Side" />}>
-              <img src="https://i.imgur.com/YiUbUVN.jpg" alt='east side'/>
+            <CardMedia overlay={<CardTitle title={questInfo.title[2]} />}>
+              <img src={questInfo.src[2]} alt={questInfo.title[2]}/>
             </CardMedia>
            </Card>
            <Card onClick={this.handleSmithHill}>
-            <CardMedia overlay={<CardTitle title="Smith Hill" />}>
-              <img src="https://i.imgur.com/NIVcddj.jpg" alt='smith hill'/>
+            <CardMedia overlay={<CardTitle title={questInfo.title[3]} />}>
+              <img src={questInfo.src[3]} alt={questInfo.title[3]}/>
             </CardMedia>
            </Card>
         </MuiThemeProvider>
