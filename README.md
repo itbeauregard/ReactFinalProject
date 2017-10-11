@@ -1,7 +1,7 @@
 # {Education App}
 
 Here is a [link to my deployed Heroku back end](https://monument-app.herokuapp.com/).
-Here is a [link to my GitHub repository](https://github.com/itbeauregard/final-back-end).
+Here is a [link to my back end GitHub repository](https://github.com/itbeauregard/final-back-end).
 
 ## Technologies Used
 
